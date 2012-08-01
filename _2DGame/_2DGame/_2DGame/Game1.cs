@@ -18,7 +18,7 @@ namespace _2DGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        Level level;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -34,7 +34,7 @@ namespace _2DGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            IsMouseVisible = true;
             base.Initialize();
         }
 
@@ -46,7 +46,7 @@ namespace _2DGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            level = new Level(spriteBatch, Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -66,6 +66,7 @@ namespace _2DGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            level.Update(gameTime);
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -82,7 +83,10 @@ namespace _2DGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            spriteBatch.Begin();
+            
+            level.Draw(gameTime);
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
