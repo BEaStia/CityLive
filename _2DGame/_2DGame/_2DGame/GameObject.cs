@@ -176,4 +176,10 @@ namespace _2DGame
             set { table[i + y * Width] = value; }
         }
     }
+    public class Camera
+    {
+        public int Width;
+        public int Height;
+        public Vector2 Position;
+    }
 }
