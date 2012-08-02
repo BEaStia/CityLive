@@ -14,9 +14,15 @@ using Microsoft.Xna.Framework.Media;
 
 namespace _2DGame
 {
-    public class GameObject
+    public class Object
+    {
+        public int Type;
+        public object Value;
+    }
+    public class GameObject:Object
     {
         public Vector2 GlobalPosition;
+        
         public virtual void Draw(GameTime gameTime)
         {
         }
@@ -112,7 +118,7 @@ namespace _2DGame
             state = Keyboard.GetState();
             base.Update(gameTime);
         }
-        public override void Draw(GameTime gameTime)
+        public void Draw(GameTime gameTime,Vector2 Position)
         {
             spriteBatch.Draw(texture, GlobalPosition, new Rectangle(CurrentFrame*FrameSize+State*FrameSize*5,Rotation*FrameSize,FrameSize,FrameSize),Color.White);
             CurrentTick++;
@@ -138,48 +144,17 @@ namespace _2DGame
             
         }
     }
-    public class Level
-    {
-        public List<GameObject> sprites;
-        public Level(SpriteBatch spriteBatch,ContentManager Content)
-        {
-
-            sprites = new List<GameObject>();
-            GameObject T = new DrawableGameObject(spriteBatch);
-            ((DrawableGameObject)T).Load(Content);
-            sprites.Add(T);
-        }
-        
-        public void Update(GameTime gameTime)
-        {
-            foreach (GameObject T in sprites)
-            {
-                T.Update(gameTime);
-            }
-        }
-        public void Draw(GameTime gameTime)
-        {
-            foreach (GameObject T in sprites)
-            {
-                T.Draw(gameTime);
-            }
-        }
-    }
+    
     public class Map
     {
         public System.Collections.Hashtable table;
         public int Width;
         public int Height;
-        public object this[int i, int y]
+        public Object this[int i, int y]
         {
-            get { return table[i + y * Width]; }
+            get { return (Object)table[i + y * Width]; }
             set { table[i + y * Width] = value; }
         }
+        
     }
-    public class Camera
-    {
-        public int Width;
-        public int Height;
-        public Vector2 Position;
     }
-}
