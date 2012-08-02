@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -162,6 +163,17 @@ namespace _2DGame
             {
                 T.Draw(gameTime);
             }
+        }
+    }
+    public class Map
+    {
+        public System.Collections.Hashtable table;
+        public int Width;
+        public int Height;
+        public object this[int i, int y]
+        {
+            get { return table[i + y * Width]; }
+            set { table[i + y * Width] = value; }
         }
     }
 }
