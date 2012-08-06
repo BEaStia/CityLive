@@ -39,6 +39,13 @@ namespace WindowsGame1
                 }
             }
         }
+        public static void AddUnit(GameObject obj)
+        {
+            Vector2 Pos = obj.Position;
+            int X = (int)(Pos.X / 10 /Map.CellWidth);
+            int Y = (int)(Pos.Y / 10/Map.CellHeight);
+            Zmap[X, Y].sprites.Add(obj);
+        }
         public static Cell Get(int x, int y)
         {
             int X = x / 10;
@@ -83,6 +90,13 @@ namespace WindowsGame1
         public int X, Y;
         public Cell[,] cells;
         public List<GameObject> sprites;
+        public void Draw(GameTime gameTime)
+        {
+            foreach (GameObject T in sprites)
+            {
+                T.Draw(gameTime);
+            }
+        }
         public Zone(int width, int height,int x,int y)
         {
             cells = new Cell[width, height];

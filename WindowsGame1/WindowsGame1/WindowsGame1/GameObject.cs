@@ -31,7 +31,7 @@ namespace WindowsGame1
         {
             Name = "Pedestrian";
         }
-        protected override void LoadContent()
+        public void Load()
         {
             Stand = new Animation((Texture2D)Storage.Images["Sprites/" + Name + "/Stand"],100);
             Move = new Animation((Texture2D)Storage.Images["Sprites/" + Name + "/Move"],100);
@@ -49,14 +49,14 @@ namespace WindowsGame1
         {
             base.Update(gameTime);
         }
-        public override void Draw(GameTime gameTime)
+        public virtual void Draw(GameTime gameTime,Vector2 position)
         {
             switch (state)
             {
-                case State.Stand: Stand.Draw(Position, Scale, Angle); break;
-                case State.Move: Move.Draw(Position, Scale, Angle); break;
-                case State.Shoot: Shoot.Draw(Position, Scale, Angle); break;
-                case State.Die: Die.Draw(Position, Scale, Angle); break;
+                case State.Stand: Stand.Draw(position, Scale, Angle); break;
+                case State.Move: Move.Draw(position, Scale, Angle); break;
+                case State.Shoot: Shoot.Draw(position, Scale, Angle); break;
+                case State.Die: Die.Draw(position, Scale, Angle); break;
             }
             base.Draw(gameTime);
         }

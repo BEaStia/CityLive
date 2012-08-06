@@ -19,6 +19,7 @@ namespace WindowsGame1
         public void Load(ContentManager Content)
         {
             map = new Map(50, 50);
+            
         }
         public void Update(GameTime gameTime)
         {

@@ -37,7 +37,12 @@ namespace WindowsGame1
         {
             // TODO: Add your initialization logic here
             level = new Level();
-            
+            IsMouseVisible = true;
+            //graphics.IsFullScreen = true;
+            //graphics.PreferredBackBufferHeight=GraphicsDevice.Viewport.
+            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            graphics.ApplyChanges();
             base.Initialize();
         }
 
@@ -53,6 +58,13 @@ namespace WindowsGame1
             st.Load(Content);
             level.Load(Content);
             camera = new Camera(this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
+            GameObject T = new GameObject(this);
+            T.Angle = 0f;
+            T.Position = new Vector2(100, 100);
+            T.Name = "Pedestrian";
+            T.Scale = 1.0f;
+            T.Load();
+            Map.AddUnit(T);
             // TODO: use this.Content to load your game content here
         }
 
@@ -91,7 +103,7 @@ namespace WindowsGame1
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            camera.Draw();
+            camera.Draw(gameTime);
             spriteBatch.End();
             base.Draw(gameTime);
         }

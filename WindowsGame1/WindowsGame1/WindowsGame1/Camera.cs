@@ -49,7 +49,7 @@ namespace WindowsGame1
             }
             ///Движение камеры сюда
         }
-        public void Draw()
+        public void Draw(GameTime gameTime)
         {
             Rectangle rectangle = new Rectangle((int)Position.X - Width / 2, (int)Position.Y - Height / 2, Width, Height);
             int left = rectangle.Left / Map.CellWidth;
@@ -66,6 +66,16 @@ namespace WindowsGame1
                 {
                     Vector2 mPos=new Vector2(i*Map.CellWidth,j*Map.CellHeight);
                     Map.Get(i, j).Draw(mPos-(this.Position - new Vector2(Width / 2, Height / 2)));
+                }
+            }
+            for (int j = top / 10; j < bottom / 10+1 && j < Map.Height / 10; j++)
+            {
+                for (int i = left/10; i < right/10+1 && i < Map.Width/10; i++)
+                {
+                    for (int k = 0; k < Map.Zmap[i, j].sprites.Count; k++)
+                    {
+                        Map.Zmap[i, j].sprites[k].Draw(gameTime, Map.Zmap[i, j].sprites[k].Position-(this.Position-new Vector2(Width/2,Height/2)));
+                    }
                 }
             }
         }
