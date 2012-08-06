@@ -50,7 +50,7 @@ namespace WindowsGame1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Storage st = new Storage();
             st.Load(Content);
-            map = new Map(5000, 5000, Content.Load<Texture2D>("Sprites/Asphalt"));
+            map = new Map(5000, 5000);
             camera = new Camera(this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
             // TODO: use this.Content to load your game content here
         }

@@ -12,20 +12,19 @@ using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame1
 {
-    public class Map
+    public struct Map
     {
         public static int Width;
         public static int Height;
         public static int CellWidth;
         public static int CellHeight;
         public static Cell[,] map;
-        public Map(int width, int height,Texture2D texture)
+        public Map(int width, int height)
         {
             Width = width;
             Height = height;
-            CellHeight = texture.Height;
-            CellWidth = texture.Width;
-            Storage.Images.Add("Background1", texture);
+            CellHeight = ((Texture2D)Storage.Images["Background1"]).Height;
+            CellWidth = ((Texture2D)Storage.Images["Background1"]).Width;
             map = new Cell[Width, Height];
             for (int j = 0; j < Height; j++)
             {
@@ -36,7 +35,7 @@ namespace WindowsGame1
             }
         }
     }
-    public class Cell
+    public struct Cell
     {
         public List<GameObject> objects;
         public int X, Y;

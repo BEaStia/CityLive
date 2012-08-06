@@ -21,7 +21,8 @@ namespace WindowsGame1
             Images.Add("Sprites/Pedestrian/Stand",Content.Load<Texture2D>("Sprites/Pedestrian/Stand"));
             Images.Add("Sprites/Pedestrian/Move", Content.Load<Texture2D>("Sprites/Pedestrian/Move"));
             Images.Add("Sprites/Pedestrian/Shoot", Content.Load<Texture2D>("Sprites/Pedestrian/Shoot"));
-            Images.Add("Sprites/Pedestrian/Die", Content.Load<Texture2D>("Sprites/Pedestrian/Die"));            
+            Images.Add("Sprites/Pedestrian/Die", Content.Load<Texture2D>("Sprites/Pedestrian/Die"));
+            Images.Add("Background1", Content.Load<Texture2D>("Sprites/Asphalt"));            
         }
     }
 }
