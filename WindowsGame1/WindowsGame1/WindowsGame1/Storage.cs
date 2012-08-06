@@ -12,9 +12,19 @@ using Microsoft.Xna.Framework.Media;
 using System.Collections;
 namespace WindowsGame1
 {
+    /// <summary>
+    /// Класс хранилища
+    /// </summary>
     public class Storage
     {
+        /// <summary>
+        /// Хранение картинок
+        /// </summary>
         public static Hashtable Images;
+        /// <summary>
+        /// Загрузка картинок
+        /// </summary>
+        /// <param name="Content">КонтентМенеджер</param>
         public void Load(ContentManager Content)
         {
             Images = new Hashtable();

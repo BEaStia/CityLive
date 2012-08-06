@@ -12,14 +12,36 @@ using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame1
 {
+    /// <summary>
+    /// Анимация
+    /// </summary>
     class Animation
     {
+        /// <summary>
+        /// Текстура для отрисовки
+        /// </summary>
         Texture2D texture;
+        /// <summary>
+        /// Количество кадров
+        /// </summary>
         int FrameCount;
+        /// <summary>
+        /// Номер кадра
+        /// </summary>
         int FrameNumber;
+        /// <summary>
+        /// Текущий тик таймера между кадрами
+        /// </summary>
         int Tick;
+        /// <summary>
+        /// Лимит тиков
+        /// </summary>
         int MaxTicks;
+        /// <summary>
+        /// Высота кадра, она же ширина
+        /// </summary>
         int FrameHeight;
+
         public Animation(Texture2D texture, int timer)
         {
             this.texture = texture;

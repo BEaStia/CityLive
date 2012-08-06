@@ -12,19 +12,46 @@ using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame1
 {
+    /// <summary>
+    /// Игровой объект
+    /// </summary>
     public class GameObject:DrawableGameComponent
     {
         /// <summary>
         /// Name of the Object, Used for loading data
         /// </summary>
         public String Name;
+        /// <summary>
+        /// Анимация простоя
+        /// </summary>
         Animation Stand;
+        /// <summary>
+        /// Анимация ходьбы
+        /// </summary>
         Animation Move;
+        /// <summary>
+        /// Анимация стрельбы
+        /// </summary>
         Animation Shoot;
+        /// <summary>
+        /// Анимация смерти
+        /// </summary>
         Animation Die;
+        /// <summary>
+        /// Состояние объекта
+        /// </summary>
         State state;
+        /// <summary>
+        /// Положение объекта
+        /// </summary>
         public Vector2 Position;
+        /// <summary>
+        /// Угол поворота объекта
+        /// </summary>
         public float Angle;
+        /// <summary>
+        /// Масштаб
+        /// </summary>
         public float Scale;
         public GameObject(Game1 Game)
             : base(Game)

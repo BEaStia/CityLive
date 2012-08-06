@@ -12,6 +12,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame1
 {
+    /// <summary>
+    /// Персонаж. 
+    /// </summary>
     public class Person:GameObject
     {
         public Person(Game1 game)

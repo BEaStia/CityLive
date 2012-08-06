@@ -12,6 +12,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame1
 {
+    /// <summary>
+    /// Уровень
+    /// </summary>
     class Level
     {
         public Map map;
