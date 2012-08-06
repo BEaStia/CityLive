@@ -18,7 +18,7 @@ namespace WindowsGame1
     {
         GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
-        Map map;
+        Level level;
         Camera camera;
         public Game1()
         {
@@ -36,7 +36,8 @@ namespace WindowsGame1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            level = new Level();
+            
             base.Initialize();
         }
 
@@ -50,7 +51,7 @@ namespace WindowsGame1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Storage st = new Storage();
             st.Load(Content);
-            map = new Map(5000, 5000);
+            level.Load(Content);
             camera = new Camera(this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
             // TODO: use this.Content to load your game content here
         }
@@ -76,7 +77,7 @@ namespace WindowsGame1
                 this.Exit();
             camera.Update();
             // TODO: Add your update logic here
-
+            level.Update(gameTime);
             base.Update(gameTime);
         }
 

@@ -56,12 +56,16 @@ namespace WindowsGame1
             int right = rectangle.Right / Map.CellWidth + 1;
             int top = rectangle.Top / Map.CellHeight;
             int bottom = rectangle.Bottom / Map.CellHeight + 1;
+            if (left < 0)
+                left = 0;
+            if (top < 0)
+                top = 0;
             for (int j = top; j < bottom&&j<Map.Height; j++)
             {
                 for (int i = left; i < right&&i<Map.Width; i++)
                 {
                     Vector2 mPos=new Vector2(i*Map.CellWidth,j*Map.CellHeight);
-                    Map.map[i, j].Draw(mPos-(this.Position - new Vector2(Width / 2, Height / 2)));
+                    Map.Get(i, j).Draw(mPos-(this.Position - new Vector2(Width / 2, Height / 2)));
                 }
             }
         }

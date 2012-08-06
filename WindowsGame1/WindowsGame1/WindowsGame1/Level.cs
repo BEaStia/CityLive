@@ -14,5 +14,15 @@ namespace WindowsGame1
 {
     class Level
     {
+        public Map map;
+        
+        public void Load(ContentManager Content)
+        {
+            map = new Map(50, 50);
+        }
+        public void Update(GameTime gameTime)
+        {
+            map.Update(gameTime);
+        }
     }
 }
