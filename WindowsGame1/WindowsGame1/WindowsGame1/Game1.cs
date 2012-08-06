@@ -18,11 +18,13 @@ namespace WindowsGame1
     {
         GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
-
+        Map map;
+        Camera camera;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
         }
 
         /// <summary>
@@ -46,7 +48,10 @@ namespace WindowsGame1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Storage st = new Storage();
+            st.Load(Content);
+            map = new Map(5000, 5000, Content.Load<Texture2D>("Sprites/Asphalt"));
+            camera = new Camera(this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
             // TODO: use this.Content to load your game content here
         }
 
@@ -69,7 +74,7 @@ namespace WindowsGame1
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
+            camera.Update();
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -84,7 +89,9 @@ namespace WindowsGame1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            camera.Draw();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
